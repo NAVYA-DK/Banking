@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,13 +10,25 @@ import { Observable } from 'rxjs';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit {
+
+  private foo:[id:number,name:string]=[10,"Nagendra"];
+  private arr:Array<{id:number,name:string}> =[{id:100,name:"Nagendra"},{id:200,name:"Amisha"}];
+
   message:string="";
   
   //Dependency injection in angular ? yes
-  constructor(private router:Router,private  httpClient : HttpClient) { 
+  constructor(private router:Router,private  httpClient : HttpClient,private sharedService:SharedService) { 
+    console.log("OMG!!"+this.foo);
+    console.log("0 = "+this.foo[0]);
+    console.log("1 = "+this.foo[1]);
+    console.log("2 = "+this.arr[0]);
+    console.log("3 = "+this.arr[1]);
   }
 
   ngOnInit(): void {
+    this.sharedService.getData().subscribe(data=>{
+        this.message=data;
+    });
   }
 
   processLogin(username: HTMLInputElement,password: HTMLInputElement) {
@@ -33,9 +46,10 @@ export class AuthComponent implements OnInit {
      this.httpClient.post(uri,payload);
 
      result.subscribe(data=>{
-        if(data.code==='success') {
+        if(data.authorization) {
           //After succesful signup
-          localStorage.setItem('loggedUser',tusername);
+          localStorage.setItem('loggedUser',JSON.stringify(data));
+          localStorage.setItem("Authorization",data.authorization)
           this.router.navigate(['dashboard']);
         }
         else{

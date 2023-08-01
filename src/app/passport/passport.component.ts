@@ -15,7 +15,7 @@ export class PassportComponent implements OnInit {
   @Input("passport")
   cpassport={} as Passport;
 
-  constructor(private http:HttpClient,private router:Router,private sharedservice:SharedService) { }
+  constructor(private http:HttpClient,private router:Router,private sharedService:SharedService) { }
 
   ngOnInit(): void {
     
@@ -26,7 +26,7 @@ export class PassportComponent implements OnInit {
       this.http.delete<any>(`${Constant.BASE_URI}/passports/${pid}`)
       .subscribe((data)=> {
           
-          this.sharedservice.publish("refreshIt");
+          this.sharedService.publish("refreshIt");
           this.cpassport={} as Passport;
       });
   }

@@ -16,5 +16,5 @@ export class SharedService {
       //asObservable - means we will get reference of data
       return this.data.asObservable();
    }
-
+   
 }
