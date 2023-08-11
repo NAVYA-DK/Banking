@@ -1,4 +1,6 @@
 export interface Signup {
+  cpphoto: string;
+  cphoto: string;
       sid:number;
 	  name:string;
 	  email:string;
@@ -13,5 +15,6 @@ export interface Signup {
 	  applicationId:string;
 	  cardName:string;
 	  applyDate:string;
+	  pphoto:string;
 	  
 }

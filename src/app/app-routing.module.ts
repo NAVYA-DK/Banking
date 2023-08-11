@@ -7,6 +7,8 @@ import { AddPassportComponent } from './add-passport/add-passport.component';
 import { CreditComponent } from './credit/credit.component';
 import { AvailableCardsComponent } from './available-cards/available-cards.component';
 import { CardModalComponent } from './card-modal/card-modal.component';
+import { ProfileComponent } from './profile/profile.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 const routes: Routes = [
    {path:'',component:AuthComponent},
@@ -16,6 +18,8 @@ const routes: Routes = [
    {path:'signup',component:SignupComponent},
    {path:'addPassport',component:AddPassportComponent},
    {path:'applyCreditCard',component:CreditComponent},
+   {path:'editProfile',component:ProfileComponent},
+   {path:'showGallery',component:GalleryComponent},
    {path:'approveRejectCreditCard/:applicationId',component:CreditComponent},
    {path:'availableCreditCards',component:AvailableCardsComponent}
   ];

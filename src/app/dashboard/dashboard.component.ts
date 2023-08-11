@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
 
    @ViewChild(PassportComponent) 
    dpassport:PassportComponent={} as PassportComponent;
+   cpphoto: any;
   
   constructor(private userAuthService:UserAuthService,private http:HttpClient,private router:Router,private sharedService:SharedService) { }
 
@@ -54,7 +55,15 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
       this.router.navigate(["availableCreditCards"]);
     }
 
+    public editProfile(){
+      this.router.navigate(["editProfile"]);
+    }
 
+    public showGallery(){
+      this.router.navigate(["showGallery"]);
+    }
+
+    
   logout():void {
     localStorage.removeItem('loggedUser');
     this.router.navigate(['auth']);
@@ -89,11 +98,21 @@ export class DashboardComponent implements OnInit,AfterViewInit,AfterViewChecked
                 let crediCardUrl=`${Constant.BASE_URI}/creditcards/cphoto?applicationId=${signup.applicationId}`;
                 this.http.get<any>(crediCardUrl).subscribe(imageData=>{
                   signup.crediCardUrl = 'data:image/png;base64,' + imageData.photo;
+                 // this.cpphoto= 'data:image/png;base64,' + signup.pphoto;
+                 const uri=`${Constant.BASE_URI}/signups/${email}`;
+                 this.http.get(uri)
+                  .subscribe((signup:any) => {
+                    this.cpphoto= 'data:image/png;base64,' + signup.pphoto;
+                    //pphoto
+                  });
                 });
                return signup;
            });
+           
 }    );
   }
+
+  
 
   public showPassportDetails(sid:number) : void {
        this.http.get<Passport>(`${Constant.BASE_URI}/signups/${sid}/passport`).subscribe((data:Passport)=>{

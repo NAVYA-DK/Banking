@@ -1,27 +1,56 @@
 <section class="container">
-    <h1>All Cards Details</h1>
-     <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
-     <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
-     <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
- 
-      <hr/>
+  <h1>All Cards Details</h1>
+   <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
+   <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
+   <img style="height: 120px;" src="https://cms-assets.bajajfinserv.in/is/image/bajajfinance/what-is-credit-card?scl=1">
 
-     <table class="table table-bordered">
-        <thead>
-          <tr style="background-color: maroon;color:white;">
-             <th colspan="2">Name : {{name}}</th>
-            <th colspan="2">Email : {{email}}</th>
-          </tr>
-        </thead>
-        <tbody>
+    <hr/>
+
+   <table class="table table-bordered">
+      <thead>
+        <tr style="background-color: maroon;color:white;">
+           <th colspan="2">Name : {{name}}</th>
+          <th colspan="2">Email : {{email}}</th>
+        </tr>
+      </thead>
+      <tbody>
+     
+        <tr>
+        <td *ngFor="let imageRow of imageData">
+          <img src="data:image/png;base64,{{imageRow.photo}}" style="height: 200px;">
+            <hr/>
+           <button (click)="showDetails(imageRow.cardName);" type="button" class="btn btn-primary">More</button>
+        </td>
+        
+       </tr>
+       </tbody>   
+</table>
+<table *ngIf="showCardDetail"  class="table table-bordered" style="font-size: 18px;">
+<tbody>
+    <tr style="background-color: #f0f7fe;">
+       <td colspan="2">Card Name : <b>{{creditCardDetails.name}}</b> &nbsp;&nbsp;&nbsp;&nbsp;  
+        
+        <span style="margin-left: 50px;">Card Type : {{creditCardDetails.type}}</span>
+
+        </td>
        
-          <tr>
-          <td *ngFor="let imageRow of imageData">
-            <img src="data:image/png;base64,{{imageRow.photo}}" style="height: 200px;">
-
-          </td>
-          
-         </tr>
-         </tbody>   
+    </tr>
+    <tr>
+      <td>Benefit1</td>
+      <td style="width: 75%;">{{creditCardDetails.benefit1}}</td>
+   </tr>
+   <tr>
+    <td>Benefit1</td>
+    <td style="width: 75%;">{{creditCardDetails.benefit2}}</td>
+ </tr>
+ <tr>
+  <td>Benefit1</td>
+  <td style="width: 75%;">{{creditCardDetails.benefit3}}</td>
+</tr>
+<tr>
+<td>Benefit1</td>
+<td style="width: 75%;">{{creditCardDetails.benefit4}}</td>
+</tr>
+  </tbody>
 </table>
 </section>

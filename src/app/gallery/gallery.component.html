@@ -1,0 +1,109 @@
+
+        <section class="container">
+            <h1>Gallery Page</h1>
+             <img style="height: 60px;" src="https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-project-management-Meaning-and-Definition-of-Project-Management-1.jpg">
+              <img style="height: 60px;" src="https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-project-management-Meaning-and-Definition-of-Project-Management-1.jpg">
+               <img style="height: 60px;" src="https://s40424.pcdn.co/in/wp-content/uploads/2022/03/What-is-project-management-Meaning-and-Definition-of-Project-Management-1.jpg">
+        
+                 
+               <span style="float: right;font-weight: bold;">
+                <button type="button" class="btn btn-warning" style="margin-right: 20px;">Profile</button>
+        
+                <button  type="button" class="btn btn-primary" style="margin-right: 100px;">Available Credit Card</button>
+        
+                 
+                </span>
+
+   	   <hr/>
+   	   <br/><br/>    
+
+   	  	 <table class="table table-bordered">
+    <thead>
+    
+      <tr>
+        <td>
+            <img style="height: 180px;margin-bottom: 3px;" src="gimage?iid=${item.id}" alt="No image is present">
+                  Filename : <b> </b>  &nbsp; &nbsp;  Filesize : <b> </b>
+                         <input type="hidden"  name="gid" value="${item.id}">    
+                        <input onchange="uploadFile('galleryForm${item.id}');" type="file" name="photo" class="form-control mr-2" style="width: 95%"/>
+            </td>
+         
+      </tr>
+         
+         
+           <tr>
+          <td>
+          Add New Photo : 
+          <img style="height: 180px;margin-bottom: 3px;" [src]="cphoto" alt="No image is present">
+                <form name="newGalleryForm">
+                     <input type="hidden"  name="gid" value="0">    
+                      <input (change)="onFileChange($event);" type="file" name="photo" class="form-control mr-2" style="width: 95%"/>
+                      <button (click)="uploadFile();" type="button" class="btn btn-warning" style="margin-right: 20px;">Upload</button>
+                  
+                       
+              
+                  </form>
+          </td>
+      </tr>
+         
+    </thead>
+    <tbody>
+</tbody>
+</table>
+  Album 
+
+
+  <br/>
+
+  <table class="table">
+      <tr>
+            <td>
+  <select (change)="sort();" class="form-control"  [(ngModel)]="sortType" style="width: 90%;">
+        <option value="name">Name</option>
+        <option value="filesize">Filesize</option>
+        <option value="createdDate">Created Date</option>
+ 
+  </select>
+</td>
+
+      <td>
+   <input type="text" name="searchText" class="form-control" style="float: inline;"/> 
+   </td>
+   <td>
+   <button  type="button" class="btn btn-primary" style="float:inline;">Clear</button>
+</td>
+</tr>
+</table>
+<hr/>
+
+ <table class="table table-bordered">
+        <tr  *ngFor="let item of mapData;let row =index ">
+             
+              <td>
+                  <table class="table">
+                        <tr>
+                              <td>
+                   <span>Name : <b>{{item.name}}</b> </span>
+
+                   <br/>
+                  <span>Filesize : <b>{{item.size}}</b> </span>
+                  <br/>
+                  <span>Created Date : <b>{{item.doe}}</b> </span>
+                  </td>
+                  <td style="width: 35%;">
+                  <img src="data:image/png;base64,{{item.photo}}" style="height: 100px;;">
+                </td>
+                </tr>
+                </table>
+
+                <td>
+                        <button (click)="deleteGallary(item.id);" type="button" class="btn btn-danger" style="float:right;margin-right: 3px;">DEL</button>
+                        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                        <button (click)="editGallary(item);" type="button" class="btn btn-success" style="float:right;">EDIT</button>
+              </td>     
+             
+        </tr>
+  </table>  
+   
+   <br/><br/>
+   </section>

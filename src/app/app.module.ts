@@ -11,10 +11,12 @@ import { SignupComponent } from './signup/signup.component';
 import { PassportComponent } from './passport/passport.component';
 import { AddPassportComponent } from './add-passport/add-passport.component';
 import { AuthInterceptor } from './auth.interceptor';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CreditComponent } from './credit/credit.component';
 import { AvailableCardsComponent } from './available-cards/available-cards.component';
 import { CardModalComponent } from './card-modal/card-modal.component';
+import { ProfileComponent } from './profile/profile.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,14 @@ import { CardModalComponent } from './card-modal/card-modal.component';
     AddPassportComponent,
     CreditComponent,
     AvailableCardsComponent,
-    CardModalComponent
+    CardModalComponent,
+    ProfileComponent,
+    GalleryComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
