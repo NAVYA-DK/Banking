@@ -58,7 +58,7 @@
   <table class="table">
       <tr>
             <td>
-  <select (change)="sort();" class="form-control"  [(ngModel)]="sortType" style="width: 90%;">
+                  <select (change)="sort();" class="form-control"  [(ngModel)]="sortType" style="width: auto;">
         <option value="name">Name</option>
         <option value="filesize">Filesize</option>
         <option value="createdDate">Created Date</option>
@@ -67,7 +67,7 @@
 </td>
 
       <td>
-   <input type="text" name="searchText" class="form-control" style="float: inline;"/> 
+            <input #searchText  style="width: 70%;" type="text" (keydown)="searchResults(searchText);"   placeholder="Start searching for a name or filesize"> 
    </td>
    <td>
    <button  type="button" class="btn btn-primary" style="float:inline;">Clear</button>
