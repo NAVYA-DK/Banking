@@ -28,8 +28,9 @@
    <app-passport [passport]="passportDetails" #dpassport>
 
    </app-passport>
-
-
+    
+   {{message}} 
+   <h3 #header style="background-color: #ffffe2;">Signup Data with Passport!</h3>
    
     <hr/>
      <b>Total Records</b> :  <span style="font-weight: bold;font-size: 16px;"> 
@@ -96,6 +97,7 @@
         <button style="display: inline;"  *ngIf="signup.passportFlag==='yes'" 
             (click)="showPassportDetails(signup.sid);"  type="button" class="btn btn-success">M!</button>
           
+            <button (click)="sendEmail(signup);" type="button" class="btn btn-warning">Email</button>
           
             
       
